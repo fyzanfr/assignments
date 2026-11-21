@@ -3,7 +3,7 @@ import torch
 from train import TrainConfig, train 
 
 def main():
-    parser = argparse.ArguementParser()
+    parser = argparse.ArgumentParser()
     parser.add_argument("--model", type=str, default="d4", help="e.g,, d4, d6, d8")
     parser.add_argument("--seqs", type=int, default=20_000, help="num_train_sequences")
     parser.add_argument("--lr", type=float, default=3e-3)
