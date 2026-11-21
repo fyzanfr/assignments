@@ -17,7 +17,7 @@ def main():
 
     config = TrainConfig(
             model_name=args.model,
-            num_train_sequences=args.seqs
+            num_train_sequences=args.seqs,
             learning_rate=args.lr,
             weight_decay=args.wd,
             batch_size=64,
