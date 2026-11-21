@@ -21,7 +21,7 @@ CONFIG_WANDB_PROJECT = "assignments"
 
 # Non-Modal users only: advanced local path overrides.
 # Leave these as None to use the default local directories.
-CONFIG_SCRATCH_ROOT = None
+CONFIG_SCRATCH_ROOT = str(REPO_ROOT / "scratch")
 CONFIG_MODEL_DIR = None
 CONFIG_DATA_DIR = None
 
@@ -288,7 +288,8 @@ def device_type(device):
 
 def autocast_context(precision="mp", device=None):
     if precision == "mp" and device_type(device) == "cuda":
-        return torch.autocast("cuda", dtype=torch.bfloat16)
+        dtype = torch.bfloat16 if torch.cuda.is_bf16_supported() else torch.float16
+        return torch.autocast("cuda", dtype=dtype)
     return nullcontext()
 
 
