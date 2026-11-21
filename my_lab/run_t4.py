@@ -8,8 +8,9 @@ def main():
     parser.add_argument("--seqs", type=int, default=20_000, help="num_train_sequences")
     parser.add_argument("--lr", type=float, default=3e-3)
     parser.add_argument("--wd", type=float, default=0.1)
-    parser.add_argument("--micro-batches", type=int, dafault=4, help="Increase if T4 OOMs")
+    parser.add_argument("--micro-batches", type=int, default=4, help="Increase if T4 OOMs")
     parser.add_argument("--suffix", type=str, default="t4-baseline")
+    parser.add_argument("--cpu-test", action="store_true", help="Allow CPU smoke test")
     args = parser.parse_args()
 
     if not args.cpu_test and not torch.cuda.is_available():
